@@ -46,13 +46,18 @@ def draw_cat_plot():
 # 10
 def draw_heat_map():
     # 11
-    df_heat = None
-
+    df_heat = df[
+        (df["ap_lo"] <= df["ap_hi"])
+        & (df["height"] >= df["height"].quantile(0.025))
+        & (df["height"] <= df["height"].quantile(0.975))
+        & (df["weight"] >= df["weight"].quantile(0.025))
+        & (df["weight"] <= df["weight"].quantile(0.975))
+    ]
     # 12
-    corr = None
+    corr = df_heat.corr()
 
     # 13
-    mask = None
+    mask = 
 
     # 14
     fig, ax = None
